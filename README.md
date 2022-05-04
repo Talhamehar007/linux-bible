@@ -13,6 +13,13 @@ A collection of most commonly used Linux commands &amp; tools, articles, &amp; s
 
 > https://linuxconfig.org/how-to-customize-dock-panel-on-ubuntu-20-04-focal-fossa-linux
 
+> $ sudo apt install dconf-editor
+$ gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+$ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
+$ gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode FIXED
+$ gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
+$ gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
+
 
 ### 3. Add a new user:
 > sudo adduser user
