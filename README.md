@@ -13,3 +13,10 @@ A collection of most commonly used Linux commands &amp; tools, articles, &amp; s
 
 > https://linuxconfig.org/how-to-customize-dock-panel-on-ubuntu-20-04-focal-fossa-linux
 
+
+### 3. Add a new user:
+> sudo adduser user
+
+### 4. Add user to sudoers group:
+> sudo usermod -a -G sudo user
+> 
