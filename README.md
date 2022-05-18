@@ -26,4 +26,8 @@ A collection of most commonly used Linux commands &amp; tools, articles, &amp; s
 
 ### 4. Add user to sudoers group:
 > sudo usermod -a -G sudo user
+
+
+### 4. Play MIDI (.mid) Files in Linux:
+> sudo apt install vlc vlc-plugin-fluidsynth
 > 
