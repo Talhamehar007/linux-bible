@@ -25,9 +25,30 @@ A collection of most commonly used Linux commands &amp; tools, articles, &amp; s
 > sudo adduser user
 
 ### 4. Add user to sudoers group:
-> sudo usermod -a -G sudo user
+>     sudo usermod -a -G sudo user
 
 
-### 4. Play MIDI (.mid) Files in Linux:
+### 5. Play MIDI (.mid) Files in Linux:
 > sudo apt install vlc vlc-plugin-fluidsynth
-> 
+
+
+### 6. My monitor only supports 1366x768. How to take 2K or 4K Screenshots?
+>     cvt 3840 2160
+>     # 3840x2160 59.98 Hz (CVT 8.29M9) hsync: 134.18 kHz; pclk: 712.75 MHz
+>     # Modeline "3840x2160_60.00"  712.75  3840 4160 4576 5312  2160 2163 2168 2237 -hsync +vsync
+
+
+eDP-1 is the Primary Monitor name, which can be found using `xrandr`  command.
+>     xrandr --newmode "3840x2160_60.00"  712.75  3840 4160 4576 5312  2160 2163 2168 2237 -hsync +vsync
+>     xrandr --addmode eDP-1 3840x2160_60.00
+
+To use the new resolution:
+>     xrandr -s 3840x2160_60.00
+
+
+To take low compression, high quality screenshots, type:
+
+>     scrot -q 100 -d 3
+
+
+
