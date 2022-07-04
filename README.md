@@ -51,4 +51,9 @@ To take low compression, high quality screenshots, type:
 >     scrot -q 100 -d 3
 
 
+### 7. Find/Sort all files in the current dir WRT their size:
+>     find . -type f -exec du -h {} \; | sort -h
+
+Reverse the sort order with `-r` i.e. larger files first:
+>     find . -type f -exec du -h {} \; | sort -hr
 
