@@ -47,13 +47,22 @@ To use the new resolution:
 
 
 To take low compression, high quality screenshots, type:
-
 >     scrot -q 100 -d 3
 
 
 ### 7. Find/Sort all files in the current dir WRT their size:
 >     find . -type f -exec du -h {} \; | sort -h
 
+
 Reverse the sort order with `-r` i.e. larger files first:
 >     find . -type f -exec du -h {} \; | sort -hr
+
+
+### 8. Find the size of all hidden files and directories (dot files & dirs) & sort them wrt size:
+>     du -sh ./.* -c | sort -h
+
+
+### 9. Kill all processes of current logged in user (equivalent to logout):
+>     ps -fu $USER | awk '{print "kill -9 " $2}' | sh
+
 
