@@ -75,8 +75,9 @@ To extract a tar file:
 >     tar -xf Pictures.tar
 
 For verbose output, use `-v` option:
->    tar -cvf Pictures.tar Pictures/
->    tar -xvf Pictures.tar
+>     tar -cvf Pictures.tar Pictures/
+
+>     tar -xvf Pictures.tar
 
 
 >     -c : create
@@ -155,4 +156,8 @@ Or even we can provide default gz option with additional flags:
 `-T0` means to use all the available threads (I Tried but it does not work, so instead `pxz` is recomended)
 >     tar -c -I 'xz -9 -T0' -f archive.tar.xz Dir/
 
->     tar -I pxz -cvf Pictures.tar.xz Pictures/
+One-liner to create a .tar.xz file with 4 Threads to speed up:
+>     XZ_DEFAULTS="--threads=4"; export XZ_DEFAULTS; tar -cJf Pictures.tar.xz Pictures/
+
+OR:
+>     tar -I pxz -cf Pictures.tar.xz Pictures/ 
