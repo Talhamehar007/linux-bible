@@ -66,3 +66,93 @@ Reverse the sort order with `-r` i.e. larger files first:
 >     ps -fu $USER | awk '{print "kill -9 " $2}' | sh
 
 
+### 10. Create & Extract `tar` Files:
+
+To create a simple tar file from a given dir use:
+>     tar -cf Pictures.tar Pictures/
+
+To extract a tar file:
+>     tar -xf Pictures.tar
+
+For verbose output, use `-v` option:
+>    tar -cvf Pictures.tar Pictures/
+>    tar -xvf Pictures.tar
+
+
+>     -c : create
+>     -x : Extract (the oposite of create)
+>     -f : specify a filename (comes always at the end)
+>     -v : verbose output
+>     -z : compress with `gzip` (Create `.tar.gz` files
+>     -j : compress with `bzip2` (Create `.tar.gz2` files)
+>     -J : compress with `xz` (Create `.tar.xz` files)
+>     -t : list contents of archive
+
+
+To create a .tar.gz file:
+>     tar -czf Pictures.tar.gz Pictures/
+To extract a .tar.gz file:
+>     tar -xzf Pictures.tar.gz Pictures/
+
+To create a .tar.gz2 file:
+>     tar -cjf Pictures.tar.gz2 Pictures/
+To extract a .tar.gz file:
+>     tar -xjf Pictures.tar.gz2 Pictures/
+
+To create a .tar.xz file:
+>     tar -cJf Pictures.tar.xz Pictures/
+To extract a .tar.xz file:
+>     tar -xJf Pictures.tar.xz Pictures/
+
+
+Use Multi-Threading to Creacte/Extract tarballs:
+
+To use all the resourses to speed up the process we can (in BASH):
+
+>     XZ_DEFAULTS="--threads=4"; export XZ_DEFAULTS;
+
+>     tar -cJvf archive.tar.xz Pictures/
+
+or in ZSH:
+
+>     set XZ_DEFAULTS "--threads=4"; export XZ_DEFAULTS;
+
+
+Or we can provide `-I, --use-compress-program=PROG` option to use a given compression program instead of default gzip, bzip2 or xz programs:
+
+`pigz`, `pbzip2` & `pxz` are the `PARALLEL` Implementaions of the `gzip`, `pbzip2`, & `xz` respectively.
+
+These can be installed using apt in Ubuntu:
+>     sudo apt install pigz pbzip2 pxz
+
+Which are just the PARALLEL implementations of the given programs (Parallel Implementation of gzip, pbzip2, & xz) 
+
+If you're using Ubuntu 20.04, the pxz program is not available in default repos.
+So you can add bionic (Ubuntu 18.04) main universe repo to install this program:
+
+>     sudo apt edit-sources
+
+And then add this line at the end of the file:
+
+>     deb http://cz.archive.ubuntu.com/ubuntu bionic main universe
+
+Then install the `pxz` program:
+
+>     sudo apt install pxz
+
+
+To use these programs instead of defaults we can provode flags like this:
+
+>     tar -I pxz -cvf Pictures.tar.xz Pictures/    
+>     tar -I pigz Pictures.tar.gz Pictrures/
+>     tar -I pbzip2 Pictures.tar.gz2 Pictrures/
+
+
+Or even we can provide default gz option with additional flags:
+`-9` means compression level 9 (maximum compression)
+>    tar -c -I 'xz -9' -f archive.tar.xz Dir/
+
+`-T0` means to use all the available threads (I Tried but it does not work, so instead `pxz` is recomended)
+>     tar -c -I 'xz -9 -T0' -f archive.tar.xz Dir/
+
+>     tar -I pxz -cvf Pictures.tar.xz Pictures/
