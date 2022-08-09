@@ -2,6 +2,9 @@
 
 A collection of most commonly used Linux commands &amp; tools, articles, &amp; settings.
 
+## CHEAT SHEET:
+[Linux Cheat Sheet](https://github.com/Talhamehar007/linux-bible/blob/main/src/cheatsheet-18.md)
+
 ### 1. Change default screenshot directory:
 
 > org/gnome/gnome-screenshot/auto-save-directory --> "file:///home/talha/Pictures/ScreenShots/"
