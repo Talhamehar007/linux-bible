@@ -284,3 +284,10 @@ From client:
 
 ```bash
 sudo lsof -i -n | egrep '\<ssh\>'
+```
+
+### 12. Find the USED and UNSED space using `lsblk`:
+
+```bash
+sudo lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT,FSUSED,FSUSE%,FSAVAIL /dev/sda /dev/sdb
+```
