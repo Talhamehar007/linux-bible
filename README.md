@@ -291,3 +291,17 @@ sudo lsof -i -n | egrep '\<ssh\>'
 ```bash
 sudo lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT,FSUSED,FSUSE%,FSAVAIL /dev/sda /dev/sdb
 ```
+
+### 13. Encrypt/Decrypt files using `gpg`:
+
+#### Encrypt:
+
+```
+gpg --symmetric --cipher-algo AES256 <FILE.txt>
+```
+
+#### Decrypt:
+
+```
+gpg -d FILE.txt.gpg > FILE.txt
+```
